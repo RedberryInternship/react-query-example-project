@@ -1,9 +1,9 @@
 import axios from './axios'
 
 export const getPosts = () => {
-  return axios.get('/posts.json')
+  return axios.get('/posts')
 }
 
 export const addPost = (data) => {
-  return axios.post('/posts.json', data)
+  return axios.post('/posts', data)
 }

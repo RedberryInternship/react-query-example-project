@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL:
-    'https://quotes-71b77-default-rtdb.europe-west1.firebasedatabase.app',
+  baseURL: 'https://posts-api-for-bootcampers-by-saba-var.vercel.app',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

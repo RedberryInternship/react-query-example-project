@@ -4,14 +4,16 @@ const PostsList = ({ posts }) => {
       {posts?.map((post) => (
         <li
           className='col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow'
-          key={post?.id}
+          key={post?._id}
         >
-          <div className='flex w-full items-center justify-between space-x-6 p-6'>
+          <div className='flex w-full items-center overflow-x-hidden justify-between space-x-6 p-6'>
             <div className='flex-1'>
-              <h3 className='text-lg font-medium text-gray-900'>
-                {post?.title}
-              </h3>
-              <p className='mt-1 text-base text-gray-500'>{post?.body}</p>
+              <div className='text-lg break-all font-medium text-gray-900'>
+                <p>{post?.title}</p>
+              </div>
+              <div className='mt-1 text-base break-all text-gray-500'>
+                {post?.body}
+              </div>
             </div>
           </div>
         </li>

@@ -6,15 +6,16 @@ export const useHome = () => {
   const [showNewPostFormModal, setShowNewPostFormModal] = useState(false)
 
   const { isLoading, data: response } = useQuery('posts', getPosts, {
-    onSuccess: () => {
+    onSuccess: (response) => {
       setShowNewPostFormModal(false)
+      console.log(response?.data)
     },
   })
 
   return {
     setShowNewPostFormModal,
-    posts: response?.data,
     showNewPostFormModal,
+    posts: response?.data,
     isLoading,
   }
 }
