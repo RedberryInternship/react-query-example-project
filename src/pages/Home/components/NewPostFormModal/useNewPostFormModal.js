@@ -1,7 +1,9 @@
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { addPost } from 'services'
 
-export const useNewPostFormModal = () => {
+export const useNewPostFormModal = (setShowNewPostFormModal) => {
+  const queryClient = useQueryClient()
+
   const formInitialValues = {
     title: '',
     body: '',
@@ -9,15 +11,13 @@ export const useNewPostFormModal = () => {
 
   const { mutate: submitForm } = useMutation(addPost, {
     onSuccess: () => {
-      console.log(1)
+      queryClient.invalidateQueries('posts')
+      setShowNewPostFormModal(false)
     },
   })
 
   const submitHandler = (data) => {
-    submitForm({
-      ...data,
-      id: new Date().toISOString(),
-    })
+    submitForm(data)
   }
 
   return { formInitialValues, submitHandler }

@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import ReactDOM from 'react-dom/client'
 import React from 'react'
 import App from './App'
@@ -9,6 +10,7 @@ const queryClient = new QueryClient()
 
 root.render(
   <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} />
     <React.StrictMode>
       <App />
     </React.StrictMode>

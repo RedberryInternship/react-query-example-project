@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='px-10 w-full p-44 bg-slate-100'>
+      <div className='px-10 w-full min-h-screen p-44 bg-slate-100'>
         <Button
           clickHandler={() => setShowNewPostFormModal(true)}
           classNames='mb-10 lg:mb-20'

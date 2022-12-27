@@ -7,7 +7,9 @@ import { Button } from 'components'
 const NewPostFormModal = (props) => {
   const { setShowNewPostFormModal, showNewPostFormModal } = props
 
-  const { formInitialValues, submitHandler } = useNewPostFormModal()
+  const { formInitialValues, submitHandler } = useNewPostFormModal(
+    setShowNewPostFormModal
+  )
 
   return (
     <ModalWrapper
