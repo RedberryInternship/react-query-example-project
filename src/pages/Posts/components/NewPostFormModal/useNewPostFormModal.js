@@ -9,7 +9,7 @@ export const useNewPostFormModal = (setShowNewPostFormModal) => {
     body: '',
   }
 
-  const { mutate: submitForm } = useMutation(addPost, {
+  const { mutate: submitForm, isLoading } = useMutation(addPost, {
     onSuccess: () => {
       queryClient.invalidateQueries('posts')
       setShowNewPostFormModal(false)
@@ -28,5 +28,6 @@ export const useNewPostFormModal = (setShowNewPostFormModal) => {
   return {
     formInitialValues,
     submitHandler,
+    isLoading,
   }
 }

@@ -7,7 +7,7 @@ import { postSchema } from 'schemas'
 const NewPostFormModal = (props) => {
   const { setShowNewPostFormModal, showNewPostFormModal } = props
 
-  const { formInitialValues, submitHandler } = useNewPostFormModal(
+  const { formInitialValues, submitHandler, isLoading } = useNewPostFormModal(
     setShowNewPostFormModal
   )
 
@@ -27,7 +27,12 @@ const NewPostFormModal = (props) => {
             <TitleInput name='title' />
             <TextAreaInput name='body' />
 
-            <Button title='Add' type='submit' classNames='h-14 mt-10' />
+            <Button
+              classNames='h-14 mt-10'
+              disabled={isLoading}
+              type='submit'
+              title='Add'
+            />
           </Form>
         </Formik>
       </ModalWrapper>
