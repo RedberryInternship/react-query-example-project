@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const NotFound = () => {
   return (
     <div className='h-screen'>
@@ -13,13 +15,13 @@ const NotFound = () => {
                 Sorry, we couldn’t find the page you’re looking for.
               </p>
               <div className='mt-6'>
-                <a
-                  href='/'
+                <Link
                   className='text-base font-medium text-indigo-600 hover:text-indigo-500'
+                  to='/posts'
                 >
-                  Go back home
+                  Go to posts page
                   <span aria-hidden='true'> &rarr;</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

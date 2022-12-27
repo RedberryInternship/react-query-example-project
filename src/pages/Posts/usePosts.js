@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 import { getPosts } from 'services'
 import { useState } from 'react'
 
-export const useHome = () => {
+export const usePosts = () => {
   const [showNewPostFormModal, setShowNewPostFormModal] = useState(false)
 
   const { isLoading, data: response } = useQuery('posts', getPosts, {

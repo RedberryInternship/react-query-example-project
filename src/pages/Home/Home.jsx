@@ -1,35 +1,14 @@
-import { NewPostFormModal, LoadingScreen, PostsList } from './components'
-import { Button } from 'components'
-import { useHome } from './useHome'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const { posts, isLoading, showNewPostFormModal, setShowNewPostFormModal } =
-    useHome()
-
-  if (isLoading) {
-    return <LoadingScreen />
-  }
-
   return (
-    <>
-      <div className='px-10 w-full min-h-screen p-44 bg-slate-100'>
-        <Button
-          clickHandler={() => setShowNewPostFormModal(true)}
-          classNames='mb-10 lg:mb-20'
-          title='+ Add new post'
-          type='button'
-        />
-
-        {showNewPostFormModal && (
-          <NewPostFormModal
-            setShowNewPostFormModal={setShowNewPostFormModal}
-            showNewPostFormModal={showNewPostFormModal}
-          />
-        )}
-
-        {posts && <PostsList posts={posts} />}
-      </div>
-    </>
+    <div className='bg-slate-100 justify-center items-center h-screen w-full flex'>
+      <Link className='text-gray-800 flex items-center gap-2' to='/posts'>
+        <p className='font-semibold text-3xl'>Let's see posts</p>
+        <ArrowRightIcon height={30} width={30} strokeWidth={3} />
+      </Link>
+    </div>
   )
 }
 
