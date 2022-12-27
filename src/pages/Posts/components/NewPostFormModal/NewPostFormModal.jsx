@@ -1,8 +1,8 @@
-import { TitleInput, ModalWrapper, TextAreaInput } from './components'
 import { useNewPostFormModal } from './useNewPostFormModal'
+import { TitleInput, TextAreaInput } from './components'
+import { Button, ModalWrapper } from 'components'
 import { Formik, Form } from 'formik'
 import { postSchema } from 'schemas'
-import { Button } from 'components'
 
 const NewPostFormModal = (props) => {
   const { setShowNewPostFormModal, showNewPostFormModal } = props
@@ -12,23 +12,26 @@ const NewPostFormModal = (props) => {
   )
 
   return (
-    <ModalWrapper
-      setShowNewPostFormModal={setShowNewPostFormModal}
-      showNewPostFormModal={showNewPostFormModal}
-    >
-      <Formik
-        initialValues={formInitialValues}
-        validationSchema={postSchema}
-        onSubmit={submitHandler}
+    <>
+      <ModalWrapper
+        setShow={setShowNewPostFormModal}
+        show={showNewPostFormModal}
+        title='Add New Post'
       >
-        <Form className='flex flex-col gap-2 mt-4'>
-          <TitleInput name='title' />
-          <TextAreaInput name='body' />
+        <Formik
+          initialValues={formInitialValues}
+          validationSchema={postSchema}
+          onSubmit={submitHandler}
+        >
+          <Form className='flex flex-col gap-2 mt-4'>
+            <TitleInput name='title' />
+            <TextAreaInput name='body' />
 
-          <Button title='Add' type='submit' classNames='h-14 mt-10' />
-        </Form>
-      </Formik>
-    </ModalWrapper>
+            <Button title='Add' type='submit' classNames='h-14 mt-10' />
+          </Form>
+        </Formik>
+      </ModalWrapper>
+    </>
   )
 }
 

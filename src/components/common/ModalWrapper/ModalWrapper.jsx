@@ -3,15 +3,11 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 const ModalWrapper = (props) => {
-  const { setShowNewPostFormModal, showNewPostFormModal } = props
+  const { setShow, show, title } = props
 
   return (
-    <Transition.Root show={showNewPostFormModal} as={Fragment}>
-      <Dialog
-        as='div'
-        className='relative z-10'
-        onClose={setShowNewPostFormModal}
-      >
+    <Transition.Root show={show} as={Fragment}>
+      <Dialog as='div' className='relative z-10' onClose={setShow}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -40,14 +36,14 @@ const ModalWrapper = (props) => {
                   <button
                     type='button'
                     className='rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none'
-                    onClick={() => setShowNewPostFormModal(false)}
+                    onClick={() => setShow(false)}
                   >
                     <span className='sr-only'>Close</span>
                     <XMarkIcon className='h-6 w-6' aria-hidden='true' />
                   </button>
                 </div>
                 <div className='text-gray-700 text-center font-semibold text-xl lg:text-2xl mb-8'>
-                  Add New Post
+                  {title}
                 </div>
                 {props.children}
               </Dialog.Panel>

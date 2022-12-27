@@ -1,10 +1,18 @@
+import { LoadingScreen, Button, ModalWrapper } from 'components'
 import { NewPostFormModal, PostsList } from './components'
-import { LoadingScreen, Button } from 'components'
 import { usePosts } from './usePosts'
 
 const Posts = () => {
-  const { posts, isLoading, showNewPostFormModal, setShowNewPostFormModal } =
-    usePosts()
+  const {
+    setShowNewPostFormModal,
+    showNewPostFormModal,
+    setShowErrorModal,
+    showErrorModal,
+    isLoading,
+    isError,
+    posts,
+    error,
+  } = usePosts()
 
   if (isLoading) {
     return <LoadingScreen />
@@ -28,6 +36,16 @@ const Posts = () => {
         )}
 
         {posts && <PostsList posts={posts} />}
+
+        {isError && (
+          <ModalWrapper
+            title={`Error: ${error?.code}!`}
+            setShow={setShowErrorModal}
+            show={showErrorModal}
+          >
+            <div>{error?.message}</div>
+          </ModalWrapper>
+        )}
       </div>
     </>
   )

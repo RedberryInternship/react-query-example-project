@@ -4,18 +4,31 @@ import { useState } from 'react'
 
 export const usePosts = () => {
   const [showNewPostFormModal, setShowNewPostFormModal] = useState(false)
+  const [showErrorModal, setShowErrorModal] = useState(false)
 
-  const { isLoading, data: response } = useQuery('posts', getPosts, {
-    onSuccess: (response) => {
+  const {
+    data: response,
+    isLoading,
+    isError,
+    error,
+  } = useQuery('posts', getPosts, {
+    onSuccess: () => {
       setShowNewPostFormModal(false)
-      console.log(response?.data)
+    },
+
+    onError: () => {
+      setShowErrorModal(true)
     },
   })
 
   return {
     setShowNewPostFormModal,
-    showNewPostFormModal,
     posts: response?.data,
+    showNewPostFormModal,
+    setShowErrorModal,
+    showErrorModal,
     isLoading,
+    isError,
+    error,
   }
 }

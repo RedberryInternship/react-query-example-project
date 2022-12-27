@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://posts-api-for-bootcampers-by-saba-var.vercel.app',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

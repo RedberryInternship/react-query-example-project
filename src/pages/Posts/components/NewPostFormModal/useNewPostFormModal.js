@@ -16,9 +16,17 @@ export const useNewPostFormModal = (setShowNewPostFormModal) => {
     },
   })
 
-  const submitHandler = (data) => {
-    submitForm(data)
+  const submitHandler = (data, { setFieldError }) => {
+    submitForm(data, {
+      onError: () => {
+        setFieldError('title', 'Fetch error')
+        setFieldError('body', 'Fetch error')
+      },
+    })
   }
 
-  return { formInitialValues, submitHandler }
+  return {
+    formInitialValues,
+    submitHandler,
+  }
 }
