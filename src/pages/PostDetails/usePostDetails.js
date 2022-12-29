@@ -12,7 +12,7 @@ export const usePostDetails = () => {
     data: response,
     isLoading,
     isError,
-  } = useQuery(['post', id], () => getOnePost(id), {
+  } = useQuery(['posts', id], () => getOnePost(id), {
     onError: (error) => {
       const errorMessage = parseErrorMessage(error)
       setErrorMessage(errorMessage)
